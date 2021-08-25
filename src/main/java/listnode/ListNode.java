@@ -1,4 +1,4 @@
-package customdatastructures;
+package listnode;
 
 import java.util.List;
 

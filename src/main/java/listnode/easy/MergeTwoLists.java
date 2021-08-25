@@ -1,6 +1,6 @@
-package easy1;
+package listnode.easy;
 
-import customdatastructures.ListNode;
+import listnode.ListNode;
 
 public class MergeTwoLists {
     //https://leetcode.com/problems/merge-two-sorted-lists/
