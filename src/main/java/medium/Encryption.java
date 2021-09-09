@@ -1,4 +1,4 @@
-package easy2;
+package medium;
 
 import java.util.Arrays;
 
