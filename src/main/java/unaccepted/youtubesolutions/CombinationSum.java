@@ -27,10 +27,7 @@ public class CombinationSum {
         if(i >= candidates.length || total > target){
             return;
         }
-
         current.add(candidates[i]);
-        System.out.println(current);
-        System.out.println(i);
         dfs(i, current, total + candidates[i], target, answer, candidates);
         current.remove(current.size() - 1);
         dfs(i + 1, current, total, target, answer, candidates);
