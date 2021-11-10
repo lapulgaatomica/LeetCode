@@ -1,9 +1,7 @@
 package easy3;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class KthDistinct {
     public static void main(String[] args) {
@@ -15,6 +13,7 @@ public class KthDistinct {
 
     public static String kthDistinct(String[] arr, int k) {
         Map<String, Integer> map = new LinkedHashMap<>();//LinkedHashMap keeps the insertion order of the key
+
         for(String ar : arr){
             map.put(ar, map.getOrDefault(ar, 0) + 1);
         }
@@ -27,7 +26,6 @@ public class KthDistinct {
                 }
             }
         }
-
         return "";
     }
 }
