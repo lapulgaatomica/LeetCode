@@ -1,13 +1,12 @@
 package easy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TwoSum {
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(Arrays.toString(twoSum2(new int[]{2, 7, 11, 15}, 9)));
+        System.out.println(Arrays.toString(twoSum2(new int[]{3,2,4}, 6)));
+        System.out.println(Arrays.toString(twoSum2(new int[]{3, 3}, 6)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -17,6 +16,21 @@ public class TwoSum {
                     return new int[]{i, j};
                 }
             }
+        }
+        return null;
+    }
+
+    public static int[] twoSum2(int[] nums, int target){
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i = 0; i < nums.length; i++){
+            int currentNumber = nums[i];
+            int completingNumber = target - currentNumber;
+            Integer indexOfCompletingNumber = map.get(completingNumber);
+            if (indexOfCompletingNumber == null)
+                map.put(currentNumber, i);
+            else
+                return new int[]{indexOfCompletingNumber, i};
         }
         return null;
     }
