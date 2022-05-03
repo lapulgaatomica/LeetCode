@@ -21,7 +21,8 @@ public class TopKFrequent {
         }
 
         // init heap 'the less frequent element first'
-        Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
+//        Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
+        Queue<Integer> heap = new PriorityQueue<>(Comparator.comparingInt(count::get));
 
         // 2. keep k top frequent elements in the heap
         // O(N log k) < O(N log N) time

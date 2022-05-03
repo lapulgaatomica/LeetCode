@@ -11,19 +11,17 @@ public class GroupAnagrams {
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, List<String>> map = new HashMap<>();
-        for(String s: strs){
+        Map<String, List<String>> map = new HashMap<>();
+        for(String str : strs){
             char[] hash = new char[26];
-
-            for(char c: s.toCharArray()){
-                hash[c-'a']++;
+            for(char ch : str.toCharArray()){
+                hash[ch - 'a']++;
             }
-
-            String str=new String(hash);
-            if(map.get(str) == null){
-                map.put(str, new ArrayList<>());
+            String hashString = new String(hash);
+            if(map.get(hashString) == null){
+                map.put(hashString, new ArrayList<>());
             }
-            map.get(str).add(s);
+            map.get(hashString).add(str);
         }
         return new ArrayList<>(map.values());
     }
