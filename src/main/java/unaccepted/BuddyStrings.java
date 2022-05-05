@@ -1,10 +1,5 @@
 package unaccepted;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 public class BuddyStrings {
     public static void main(String[] args) {
         // https://leetcode.com/problems/buddy-strings/
@@ -18,41 +13,31 @@ public class BuddyStrings {
     }
 
     public static boolean buddyStrings(String s, String goal) {
-        int numberOfDifferences = 0;
-        int sumOfDifferences = 0;
-        Map<Character, Integer> frequencyOfCharacters = new HashMap<>();
-
-        if(s.length() != goal.length() || s.length() == 1){
+        if (s.length() != goal.length())
             return false;
-        }
+        if (s.equals(goal)) {
+            int[] count = new int[26];
+            for (int i = 0; i < s.length(); ++i)
+                count[s.charAt(i) - 'a']++;
 
-        Set<Character> characterSet = new HashSet<>();
-
-
-        for(int i = 0; i < s.length(); i++){
-            char currentSCharacter = s.charAt(i);
-            char currentGoalCharacter = goal.charAt(i);
-            int difference = currentSCharacter - currentGoalCharacter;
-            characterSet.add(currentSCharacter);
-            characterSet.add(currentGoalCharacter);
-            if(difference != 0){
-                numberOfDifferences++;
-            }
-            sumOfDifferences += difference;
-            frequencyOfCharacters.put(currentSCharacter, frequencyOfCharacters.getOrDefault(currentSCharacter, 0) + 1);
-        }
-
-        if ((sumOfDifferences == 0 && numberOfDifferences == 2)
-                || (sumOfDifferences == 0 && characterSet.size() == 1)){
-            return true;
-        }else if( sumOfDifferences == 0 && numberOfDifferences == 0 && characterSet.size() >= 2 && s.length() > 2){
-            for(int i : frequencyOfCharacters.values()){
-                if(i > 1 ){
+            for (int c: count)
+                if (c > 1)
                     return true;
+            return false;
+        } else {
+            int first = -1, second = -1;
+            for (int i = 0; i < s.length(); ++i) {
+                if (s.charAt(i) != goal.charAt(i)) {
+                    if (first == -1)
+                        first = i;
+                    else if (second == -1)
+                        second = i;
+                    else
+                        return false;
                 }
             }
-        }
 
-        return false;
+            return (second != -1 && s.charAt(first) == goal.charAt(second) && s.charAt(second) == goal.charAt(first));
+        }
     }
 }

@@ -6,6 +6,7 @@ import java.util.Set;
 public class IsHappy {
     public static void main(String[] args) {
         System.out.println(isHappy(19));
+        System.out.println(1 + "" + 2);
     }
 
     public static boolean isHappy(int n) {
