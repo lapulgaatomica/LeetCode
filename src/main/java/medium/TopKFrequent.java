@@ -8,36 +8,33 @@ public class TopKFrequent {
     }
 
     public static int[] topKFrequent(int[] nums, int k) {
-        // O(1) time
-        if (k == nums.length) {
-            return nums;
-        }
-
-        // 1. build hash map : character and how often it appears
-        // O(N) time
+        int[] ans = new int[k];
         Map<Integer, Integer> count = new HashMap<>();
-        for (int n: nums) {
-            count.put(n, count.getOrDefault(n, 0) + 1);
+        Queue<T> minHeap = new PriorityQueue<>((a, b) -> a.freq - b.freq);
+
+        for (final int num : nums)
+            count.merge(num, 1, Integer::sum);
+
+        for (Map.Entry<Integer, Integer> entry : count.entrySet()) {
+            final int num = entry.getKey();
+            final int freq = entry.getValue();
+            minHeap.offer(new T(num, freq));
+            if (minHeap.size() > k)
+                minHeap.poll();
         }
 
-        // init heap 'the less frequent element first'
-//        Queue<Integer> heap = new PriorityQueue<>((n1, n2) -> count.get(n1) - count.get(n2));
-        Queue<Integer> heap = new PriorityQueue<>(Comparator.comparingInt(count::get));
+        for (int i = 0; i < k; ++i)
+            ans[i] = minHeap.poll().num;
 
-        // 2. keep k top frequent elements in the heap
-        // O(N log k) < O(N log N) time
-        for (int n: count.keySet()) {
-            heap.add(n);
-            if (heap.size() > k)
-                heap.poll();
-        }
+        return ans;
+    }
+}
 
-        // 3. build an output array
-        // O(k log k) time
-        int[] top = new int[k];
-        for(int i = k - 1; i >= 0; --i) {
-            top[i] = heap.poll();
-        }
-        return top;
+class T {
+    public int num;
+    public int freq;
+    public T(int num, int freq) {
+        this.num = num;
+        this.freq = freq;
     }
 }
