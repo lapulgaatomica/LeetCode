@@ -8,12 +8,11 @@ public class FirstQuestion {
     }
 
     public static String compress(String string){
-        int length = string.length();
         StringBuilder compressedText = new StringBuilder();
         char lastChar = string.charAt(0);
         int charCount = 1;
 
-        for(int i = 1; i < length; i++) {
+        for(int i = 1; i < string.length(); i++) {
             if(string.charAt(i) == lastChar)
                 charCount++;
             else {

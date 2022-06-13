@@ -10,11 +10,11 @@ public class TopKFrequent {
     public static int[] topKFrequent(int[] nums, int k) {
         int[] ans = new int[k];
         Map<Integer, Integer> count = new HashMap<>();
-        Queue<T> minHeap = new PriorityQueue<>((a, b) -> a.freq - b.freq);
 
         for (final int num : nums)
             count.merge(num, 1, Integer::sum);
 
+        Queue<T> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a.freq));
         for (Map.Entry<Integer, Integer> entry : count.entrySet()) {
             final int num = entry.getKey();
             final int freq = entry.getValue();
@@ -24,7 +24,7 @@ public class TopKFrequent {
         }
 
         for (int i = 0; i < k; ++i)
-            ans[i] = minHeap.poll().num;
+            ans[i] = Objects.requireNonNull(minHeap.poll()).num;
 
         return ans;
     }

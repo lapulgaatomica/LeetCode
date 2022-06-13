@@ -1,4 +1,4 @@
-package unaccepted.youtubesolutions;
+package medium;
 
 import java.util.*;
 
@@ -17,10 +17,8 @@ public class GroupAnagrams {
             for(char ch : str.toCharArray()){
                 hash[ch - 'a']++;
             }
-            String hashString = new String(hash);
-            if(map.get(hashString) == null){
-                map.put(hashString, new ArrayList<>());
-            }
+            String hashString = String.valueOf(hash);
+            map.computeIfAbsent(hashString, k -> new ArrayList<>());
             map.get(hashString).add(str);
         }
         return new ArrayList<>(map.values());
