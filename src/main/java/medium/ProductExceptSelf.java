@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ProductExceptSelf {
     public static void main(String[] args) {
-//        System.out.println(Arrays.toString(productExceptSelf1(new int[]{1, 2, 3, 4})));
+        System.out.println(Arrays.toString(productExceptSelf1(new int[]{1, 2, 3, 4})));
         System.out.println(Arrays.toString(productExceptSelf1(new int[]{1,-1,0,-3,3})));
     }
 
