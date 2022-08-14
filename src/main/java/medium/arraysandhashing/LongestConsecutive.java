@@ -1,4 +1,4 @@
-package medium;
+package medium.arraysandhashing;
 
 import java.util.Arrays;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package medium;
+package medium.arraysandhashing;
 
 public class ShiftingLetters {
     public static void main(String[] args) {
