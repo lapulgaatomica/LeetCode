@@ -1,4 +1,4 @@
-package medium.twopointer;
+package blind75.twopointer;
 
 public class MaxArea {
     public static void main(String[] args) {

@@ -1,7 +1,6 @@
-package medium.arraysandhashing;
+package blind75.arraysandhashing;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class EncodeDecodeString {

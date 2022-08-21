@@ -1,4 +1,4 @@
-package medium.arraysandhashing;
+package blind75.arraysandhashing;
 
 import java.util.*;
 
