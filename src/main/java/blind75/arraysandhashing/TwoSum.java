@@ -1,4 +1,4 @@
-package easy;
+package blind75.arraysandhashing;
 
 import java.util.*;
 
@@ -25,13 +25,11 @@ public class TwoSum {
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int i = 0; i < nums.length; i++){
-            int currentNumber = nums[i];
-            int completingNumber = target - currentNumber;
-            Integer indexOfCompletingNumber = map.get(completingNumber);
-            if (indexOfCompletingNumber == null)
-                map.put(currentNumber, i);
-            else
-                return new int[]{indexOfCompletingNumber, i};
+            if(map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]), i};
+            }else{
+                map.put(target - nums[i], i);
+            }
         }
         return null;
     }
