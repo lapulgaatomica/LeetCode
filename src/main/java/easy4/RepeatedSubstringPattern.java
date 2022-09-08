@@ -1,6 +1,7 @@
 package easy4;
 
 public class RepeatedSubstringPattern {
+    //https://leetcode.com/problems/repeated-substring-pattern/submissions/
     public static void main(String[] args) {
         System.out.println(repeatedSubstringPattern("abab"));
         System.out.println(repeatedSubstringPattern("aba"));

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class NeedleInHaystack {
+    //https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
     public static void main(String[] args) {
         System.out.println(strStr("sadbutsad", "sad"));
         System.out.println(strStr("leetcode", "leeto"));
