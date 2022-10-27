@@ -5,9 +5,8 @@ public class IsPalindrome {
     public static void main(String[] args) {
         LinkedListt list = new LinkedListt();
         list.addAtHead(1);
-//        list.addAtTail(2);
-//        list.addAtTail();
-//        list.addAtTail(1);
+        list.addAtTail(2);
+        list.addAtTail(1);
         ListNode listNode = list.getHead();
         System.out.println(isPalindrome(listNode));
     }
