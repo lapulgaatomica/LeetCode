@@ -1,4 +1,4 @@
-package tries.implementtrie;
+package tries.hackerank;
 
 public class TrieTest {
     public static void main(String[] args) {

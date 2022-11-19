@@ -1,4 +1,4 @@
-package tries.implementtrie;
+package tries.hackerank;
 
 public class Trie {
     private final TrieNode root;

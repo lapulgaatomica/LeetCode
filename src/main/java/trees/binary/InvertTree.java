@@ -1,4 +1,4 @@
-package trees;
+package trees.binary;
 
 public class InvertTree {
     //https://leetcode.com/problems/invert-binary-tree/
