@@ -5,17 +5,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode() {}
+    public TreeNode() {}
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
-    TreeNode(int val, TreeNode left, TreeNode right) {
+    public TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
@@ -50,7 +50,7 @@ public class TreeNode {
      *     2
      */
     public String toString() {
-        String string = "[" + val + ", ";
+        StringBuilder string = new StringBuilder("[" + val + ", ");
         Queue<TreeNode> curLevel = new LinkedList<>();
         curLevel.add(left);
         curLevel.add(right);
@@ -59,11 +59,11 @@ public class TreeNode {
             while (!curLevel.isEmpty()) {
                 TreeNode node = curLevel.poll();
                 if (node != null) {
-                    string += node.val + ", ";
+                    string.append(node.val).append(", ");
                     nextLevel.add(node.left);
                     nextLevel.add(node.right);
                 } else {
-                    string += "#, ";
+                    string.append("#, ");
                 }
             }
             curLevel = nextLevel;
@@ -87,30 +87,30 @@ public class TreeNode {
     }
 
     public static String toString(TreeNode root) {
-        String string = "";
+        StringBuilder string = new StringBuilder();
         Queue<TreeNode> curLevel = new LinkedList<>();
         curLevel.add(root);
-        while (curLevel.isEmpty() == false) {
+        while (!curLevel.isEmpty()) {
             Queue<TreeNode> nextLevel = new LinkedList<>();
-            String nextLine = "";
-            while (curLevel.isEmpty() == false) {
+            StringBuilder nextLine = new StringBuilder();
+            while (!curLevel.isEmpty()) {
                 TreeNode node = curLevel.poll();
-                string += node.val;
+                string.append(node.val);
                 if (node.left != null) {
-                    nextLine += "/  ";
+                    nextLine.append("/  ");
                     nextLevel.add(node.left);
                 }
                 if (node.right != null) {
-                    nextLine += "/  ";
+                    nextLine.append("/  ");
                     nextLevel.add(node.right);
                 }
             }
-            string += "\n";
-            string += nextLine;
+            string.append("\n");
+            string.append(nextLine);
             curLevel = nextLevel;
         }
         // remove the redundant ", " at the end of String result
-        return string;
+        return string.toString();
     }
 
     /**
@@ -208,14 +208,12 @@ public class TreeNode {
         TreeNode.connect(n4, n2, n6);
         TreeNode.connect(n2, n1, n3);
         TreeNode.connect(n6, n5, n7);
-        TreeNode root = n4;
-        return root;
+        return n4;
     }
 
     // 1
     public static TreeNode getTree0() {
-        TreeNode root = new TreeNode(1);
-        return root;
+        return new TreeNode(1);
     }
 
     //   1
@@ -264,8 +262,7 @@ public class TreeNode {
         TreeNode t4 = new TreeNode(1);
         TreeNode.connect(t1, t3, null);
         TreeNode.connect(t3, t4, null);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //      1
@@ -319,8 +316,7 @@ public class TreeNode {
         TreeNode.connect(t3, t5, t6);
         TreeNode.connect(t4, t7, t8);
         TreeNode.connect(t6, t9, t10);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //      10
@@ -338,8 +334,7 @@ public class TreeNode {
         TreeNode t5 = new TreeNode(7);
         TreeNode.connect(t1, t2, t3);
         TreeNode.connect(t2, t4, t5);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //          5
@@ -363,8 +358,7 @@ public class TreeNode {
         TreeNode.connect(t2, t3, null);
         TreeNode.connect(t3, t4, null);
         TreeNode.connect(t4, t5, null);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //   5
@@ -388,8 +382,7 @@ public class TreeNode {
         TreeNode.connect(t2, null, t3);
         TreeNode.connect(t3, null, t4);
         TreeNode.connect(t4, null, t5);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //  1
@@ -405,8 +398,7 @@ public class TreeNode {
         TreeNode n3 = new TreeNode(3);
         TreeNode.connect(n1, null, n2);
         TreeNode.connect(n2, n3, null);
-        TreeNode root = n1;
-        return root;
+        return n1;
     }
 
     //       1
@@ -425,8 +417,7 @@ public class TreeNode {
         TreeNode.connect(n1, n2, n3);
         TreeNode.connect(n2, n4, n5);
         TreeNode.connect(n3, n6, n7);
-        TreeNode root = n1;
-        return root;
+        return n1;
     }
 
     //        5
@@ -450,8 +441,7 @@ public class TreeNode {
         TreeNode.connect(t2, null, null);
         TreeNode.connect(t3, t5, t6);
         TreeNode.connect(t6, t9, t10);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //         8
@@ -562,8 +552,7 @@ public class TreeNode {
         TreeNode.connect(t1, t2, t3);
         TreeNode.connect(t2, t4, null);
         TreeNode.connect(t3, t5, null);
-        TreeNode root = t1;
-        return root;
+        return t1;
     }
 
     //          1
