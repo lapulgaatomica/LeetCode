@@ -1,11 +1,92 @@
 package easy;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class AddBinary {
     public static void main(String[] args) {
         System.out.println(addBinary("11", "1"));
+        System.out.println(addBinary2("11", "1"));
         System.out.println(addBinary("1010", "1011"));
+        System.out.println(addBinary2("1010", "1011"));
         System.out.println(addBinary("111", "1"));
+        System.out.println(addBinary2("111", "1"));
         System.out.println(addBinary("110010", "100"));
+        System.out.println(addBinary2("110010", "100"));
+    }
+
+    public static String addBinary2(String a, String b) {
+        int remainderCount = 0;
+        StringBuilder answer = new StringBuilder();
+        StringBuilder aa = new StringBuilder(a);
+        StringBuilder bb = new StringBuilder(b);
+        while(aa.length() > 0 && bb.length() > 0){
+            char currA = aa.charAt(aa.length() - 1);
+            char currB = bb.charAt(bb.length() - 1);
+            aa.deleteCharAt(aa.length() - 1);
+            bb.deleteCharAt(bb.length() - 1);
+            int addition = ((int)currA - 48) + ((int)currB - 48);
+            if(addition == 0){
+                if(remainderCount > 0){
+                    answer.append("1");
+                    remainderCount--;
+                }else{
+                    answer.append("0");
+                }
+            } else if (addition == 1) {
+                if(remainderCount > 0){
+                    answer.append("0");
+                }else{
+                    answer.append("1");
+                }
+            }else{
+                if(remainderCount > 0){
+                    answer.append("1");
+                }else{
+                    answer.append("0");
+                    remainderCount++;
+                }
+            }
+        }
+        while(aa.length() > 0){
+            char currA = aa.charAt(aa.length() - 1);
+            aa.deleteCharAt(aa.length() - 1);
+            if(currA == '1'){
+                if(remainderCount > 0)
+                    answer.append(0);
+                else
+                    answer.append(1);
+            }else{
+                if(remainderCount > 0){
+                    answer.append(1);
+                    remainderCount--;
+                }else{
+                    answer.append(0);
+                }
+            }
+        }
+        while(bb.length() > 0){
+            char currB = bb.charAt(bb.length() - 1);
+            bb.deleteCharAt(bb.length() - 1);
+            if(currB == '1'){
+                if(remainderCount > 0)
+                    answer.append(0);
+                else
+                    answer.append(1);
+            }else{
+                if(remainderCount > 0){
+                    answer.append(1);
+                    remainderCount--;
+                }else{
+                    answer.append(0);
+                }
+            }
+        }
+        while (remainderCount > 0){
+            answer.append(1);
+            remainderCount--;
+        }
+        return answer.reverse().toString();
     }
 
     public static String addBinary(String a, String b) {

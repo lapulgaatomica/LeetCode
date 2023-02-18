@@ -8,11 +8,16 @@ public class NumPairsDivisibleBy60 {
     }
 
     public static int numPairsDivisibleBy60(int[] time) {
+        int[] hash = new int[60];
         int answer = 0;
-        int[] seen = new int[60];
-        for(int t : time){
-            answer += seen[(60 - (t % 60)) % 60];
-            seen[t % 60]++;
+
+        for(int curr : time){
+            int temp = curr;
+            while (temp > 60)
+                temp -= 60;
+            if(hash[60 - temp] > 0)
+                answer += hash[60 - temp];
+            hash[temp % 60]++;
         }
         return answer;
     }
