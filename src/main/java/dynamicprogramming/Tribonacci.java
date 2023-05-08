@@ -6,6 +6,7 @@ public class Tribonacci {
     public static void main(String[] args) {
         System.out.println(tribonacci(4));
         System.out.println(tribonacci(5));
+        System.out.println(tribonacci(25));
         System.out.println(tribonacci(31));
         System.out.println(tribonacci(33));
     }
